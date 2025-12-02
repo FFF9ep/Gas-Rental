@@ -1,32 +1,104 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppProvider'
-import CarCard from '../components/cards/CarCard'
-import { Link } from 'react-router-dom'
+import React from "react";
 
-export default function Home(){
-  const { cars } = useContext(AppContext)
+import HeroSlider from "../components/UI/HeroSlider";
+import Helmet from "../components/Helmet/Helmet";
+
+import { Container, Row, Col } from "reactstrap";
+import FindCarForm from "../components/UI/FindCarForm";
+import AboutSection from "../components/UI/AboutSection";
+import ServicesList from "../components/UI/ServicesList";
+import carData from "../assets/data/carData";
+import CarItem from "../components/UI/CarItem";
+import BecomeDriverSection from "../components/UI/BecomeDriverSection";
+import Testimonial from "../components/UI/Testimonial";
+
+import BlogList from "../components/UI/BlogList";
+
+const Home = () => {
   return (
-    <main className="p-4 max-w-3xl mx-auto">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">Gas Rental</h1>
-        <p className="text-sm text-gray-500">Sewa mobil mudah & cepat</p>
-      </header>
+    <Helmet title="Home">
+      {/* ============= hero section =========== */}
+      <section className="p-0 hero__slider-section">
+        <HeroSlider />
 
-      <section className="mb-4">
-        <input placeholder="Search cars..." className="w-full p-2 border rounded" />
+        <div className="hero__form">
+          <Container>
+            <Row className="form__row">
+              <Col lg="4" md="4">
+                <div className="find__cars-left">
+                  <h2>Find your best car here</h2>
+                </div>
+              </Col>
+
+              <Col lg="8" md="8" sm="12">
+                <FindCarForm />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </section>
+      {/* =========== about section ================ */}
+      <AboutSection />
+      {/* ========== services section ============ */}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-5 text-center">
+              <h6 className="section__subtitle">See our</h6>
+              <h2 className="section__title">Popular Services</h2>
+            </Col>
+
+            <ServicesList />
+          </Row>
+        </Container>
+      </section>
+      {/* =========== car offer section ============= */}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center mb-5">
+              <h6 className="section__subtitle">Come with</h6>
+              <h2 className="section__title">Hot Offers</h2>
+            </Col>
+
+            {carData.slice(0, 6).map((item) => (
+              <CarItem item={item} key={item.id} />
+            ))}
+          </Row>
+        </Container>
+      </section>
+      {/* =========== become a driver section ============ */}
+      <BecomeDriverSection />
+
+      {/* =========== testimonial section =========== */}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-4 text-center">
+              <h6 className="section__subtitle">Our clients says</h6>
+              <h2 className="section__title">Testimonials</h2>
+            </Col>
+
+            <Testimonial />
+          </Row>
+        </Container>
       </section>
 
-      <section className="grid grid-cols-1 gap-4">
-        {(cars||[]).map(c => (
-          <div key={c.id} className="">
-            <CarCard car={c} />
-            <div className="flex gap-2 mt-2">
-              <Link to={`/car/${c.id}/booking`} className="px-3 py-2 bg-primary text-white rounded">Rent Now</Link>
-            </div>
-          </div>
-        ))}
+      {/* =============== blog section =========== */}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-5 text-center">
+              <h6 className="section__subtitle">Explore our blogs</h6>
+              <h2 className="section__title">Latest Blogs</h2>
+            </Col>
+
+            <BlogList />
+          </Row>
+        </Container>
       </section>
-      <footer className="mt-8 text-sm text-gray-500">Demo app — frontend only</footer>
-    </main>
-  )
-}
+    </Helmet>
+  );
+};
+
+export default Home;

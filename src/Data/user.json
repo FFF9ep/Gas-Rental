@@ -1,0 +1,9 @@
+[
+  {
+    "id": "user-1",
+    "name": "Septiyana",
+    "email": "septi@example.com",
+    "role": "customer",
+    "ktp": null
+  }
+]

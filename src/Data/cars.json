@@ -7,8 +7,14 @@
     "seats": 8,
     "fuel": "Diesel",
     "transmission": "Automatic",
-    "images": ["/assets/images/pajero-1.png"],
-    "availableRegions": ["Jawa Tengah","Jawa Timur","Jawa Barat"]
+    "images": [
+      "/assets/images/pajero-1.png"
+    ],
+    "availableRegions": [
+      "Jawa Tengah",
+      "Jawa Timur",
+      "Jawa Barat"
+    ]
   },
   {
     "id": "xenia-1",
@@ -18,7 +24,11 @@
     "seats": 7,
     "fuel": "Petrol",
     "transmission": "Manual",
-    "images": ["/assets/images/xenia-1.png"],
-    "availableRegions": ["Jawa Tengah"]
+    "images": [
+      "/assets/images/xenia-1.png"
+    ],
+    "availableRegions": [
+      "Jawa Tengah"
+    ]
   }
 ]
